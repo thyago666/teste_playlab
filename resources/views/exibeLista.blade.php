@@ -18,9 +18,11 @@
         <tbody>
           @foreach($response['items'] as $ids)
           <tr>
-         
-         <td><a href="https://www.youtube.com/watch?v={{$ids['id']['videoId']}}">{{$ids['id']['videoId']}}</a></td>
-        
+            @if (isset($ids['id']['videoId']))
+           <td><a href="https://www.youtube.com/watch?v={{$ids['id']['videoId']}}">{{$ids['id']['videoId']}}</a></td>
+          @elseif(isset($ids['id']['channelId']))
+          <td><a href="https://www.youtube.com/watch?v={{$ids['id']['channelId']}}">{{$ids['id']['channelId']}}</a></td>
+          @endif 
           @endforeach
           </tr>
        </tbody>
